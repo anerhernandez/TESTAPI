@@ -5,11 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+/**
+* @OA\Info(title="API Usuarios", version="1.0")
+*
+* @OA\Server(url="http://swagger.local")
+*/
 class ApiProductController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     */
+    * @OA\Get(
+    *     path="/api/products",
+    *     summary="Mostrar pruductos",
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todos los productos."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
     public function index()
     {
         $products = Product::all();
